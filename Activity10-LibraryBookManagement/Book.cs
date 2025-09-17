@@ -32,14 +32,25 @@ namespace Activity10_LibraryBookManagement
                     return "Checked out";
                 else
                     return "Available";
-            }    
+            }   
         }
+
+        public void Borrow()
+            { isCheckedOut = true; }
+
+        public void Return()
+            { isCheckedOut = false; }
 
         public Book(string title, string  author)
         {
             this.title = title;
             this.author = author;
             this.isCheckedOut = false; // default ng books is available muna
+        }
+
+        public override string ToString()
+        {
+            return title;
         }
     }
 }

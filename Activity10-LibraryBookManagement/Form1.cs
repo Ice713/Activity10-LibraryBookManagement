@@ -24,11 +24,16 @@ namespace Activity10_LibraryBookManagement
             {
                 if (listBoxBooks.SelectedItem != null)
                 {
-                    Book selectedBook = (Book)listBoxBooks.SelectedItem;
+                    Book selectedBook = listBoxBooks.SelectedItem as Book;
 
                     labelBook.Text = "Book: " + selectedBook?.Title;
                     labelAuthor.Text = "Author: " + selectedBook?.Author;
                     labelStatus.Text = "Status: " + selectedBook?.IsCheckedOut;
+
+                    if (selectedBook.IsCheckedOut == "Available")
+                        buttonStatus.Text = "Borrowed";
+                    else
+                        buttonStatus.Text = "Returned";
                 }
                 else
                 {
@@ -51,11 +56,17 @@ namespace Activity10_LibraryBookManagement
                     Book selectedBook = listBoxBooks.SelectedItem as Book;
 
                     if (selectedBook.IsCheckedOut == "Available")
-                        this.Text = "Borrowed";
+                    {
+                        buttonStatus.Text = "Returned";
+                        selectedBook.Borrow();
+                    }
                     else
-                        this.Text = "Returned";
+                    { 
+                        buttonStatus.Text = "Borrowed";
+                        selectedBook.Return();
+                    }
 
-                    labelStatus.Text = "Status: " + selectedBook.IsCheckedOut;
+                    labelStatus.Text = "Status: " + selectedBook?.IsCheckedOut;
                 }
                 else
                     buttonStatus.Text = "Borrowed / Returned";
@@ -81,7 +92,7 @@ namespace Activity10_LibraryBookManagement
             // add items mula sa List<Book>
             foreach (Book book in books)
             {
-                listBoxBooks.Items.Add(book.Title);
+                listBoxBooks.Items.Add(book);
             }
         }
     }
