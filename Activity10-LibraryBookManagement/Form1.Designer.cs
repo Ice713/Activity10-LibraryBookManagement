@@ -80,7 +80,7 @@
             this.buttonStatus.Name = "buttonStatus";
             this.buttonStatus.Size = new System.Drawing.Size(226, 32);
             this.buttonStatus.TabIndex = 4;
-            this.buttonStatus.Text = "Borrow / Return";
+            this.buttonStatus.Text = "Borrowed / Returned";
             this.buttonStatus.UseVisualStyleBackColor = true;
             this.buttonStatus.Click += new System.EventHandler(this.buttonStatus_Click);
             // 

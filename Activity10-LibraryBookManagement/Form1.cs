@@ -20,12 +20,50 @@ namespace Activity10_LibraryBookManagement
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                if (listBoxBooks.SelectedItem != null)
+                {
+                    Book selectedBook = (Book)listBoxBooks.SelectedItem;
 
+                    labelBook.Text = "Book: " + selectedBook?.Title;
+                    labelAuthor.Text = "Author: " + selectedBook?.Author;
+                    labelStatus.Text = "Status: " + selectedBook?.IsCheckedOut;
+                }
+                else
+                {
+                    buttonStatus.Text = "Borrowed / Returned";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            
         }
 
         private void buttonStatus_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (listBoxBooks.SelectedItem != null)
+                {
+                    Book selectedBook = listBoxBooks.SelectedItem as Book;
 
+                    if (selectedBook.IsCheckedOut == "Available")
+                        this.Text = "Borrowed";
+                    else
+                        this.Text = "Returned";
+
+                    labelStatus.Text = "Status: " + selectedBook.IsCheckedOut;
+                }
+                else
+                    buttonStatus.Text = "Borrowed / Returned";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,7 +81,7 @@ namespace Activity10_LibraryBookManagement
             // add items mula sa List<Book>
             foreach (Book book in books)
             {
-                listBoxBooks.Items.Add(book);
+                listBoxBooks.Items.Add(book.Title);
             }
         }
     }
