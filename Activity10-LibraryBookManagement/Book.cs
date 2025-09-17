@@ -8,6 +8,38 @@ namespace Activity10_LibraryBookManagement
 {
     internal class Book
     {
+        private string title;
+        private string author;
+        private bool isCheckedOut;
 
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+        public string Author
+        { 
+            get { return author; } 
+            set {  author = value; } 
+        }
+        
+        public string IsCheckedOut
+        {
+            get 
+            {
+                if (isCheckedOut)
+                    return "Checked out";
+                else
+                    return "Available";
+            }    
+        }
+
+        public Book(string title, string  author)
+        {
+            this.title = title;
+            this.author = author;
+            this.isCheckedOut = false; // default ng books is available muna
+        }
     }
 }

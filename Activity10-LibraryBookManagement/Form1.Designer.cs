@@ -28,26 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxBooks = new System.Windows.Forms.ListBox();
             this.labelBook = new System.Windows.Forms.Label();
             this.labelAuthor = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
+            this.buttonStatus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listBoxBooks
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Items.AddRange(new object[] {
-            "C# Programming",
-            "The Lord of the Rings",
-            "Introduction to Algorithms",
-            "A Brief History of Time"});
-            this.listBox1.Location = new System.Drawing.Point(266, 76);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(227, 84);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxBooks.FormattingEnabled = true;
+            this.listBoxBooks.ItemHeight = 16;
+            this.listBoxBooks.Location = new System.Drawing.Point(266, 76);
+            this.listBoxBooks.Name = "listBoxBooks";
+            this.listBoxBooks.Size = new System.Drawing.Size(227, 84);
+            this.listBoxBooks.TabIndex = 0;
+            this.listBoxBooks.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // labelBook
             // 
@@ -77,17 +73,30 @@
             this.labelStatus.TabIndex = 3;
             this.labelStatus.Text = "Status:";
             // 
+            // buttonStatus
+            // 
+            this.buttonStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStatus.Location = new System.Drawing.Point(267, 293);
+            this.buttonStatus.Name = "buttonStatus";
+            this.buttonStatus.Size = new System.Drawing.Size(226, 32);
+            this.buttonStatus.TabIndex = 4;
+            this.buttonStatus.Text = "Borrow / Return";
+            this.buttonStatus.UseVisualStyleBackColor = true;
+            this.buttonStatus.Click += new System.EventHandler(this.buttonStatus_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonStatus);
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.labelAuthor);
             this.Controls.Add(this.labelBook);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxBooks);
             this.Name = "Form1";
             this.Text = "Library Book Management";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,10 +104,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxBooks;
         private System.Windows.Forms.Label labelBook;
         private System.Windows.Forms.Label labelAuthor;
         private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.Button buttonStatus;
     }
 }
 
