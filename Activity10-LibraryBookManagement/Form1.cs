@@ -31,12 +31,19 @@ namespace Activity10_LibraryBookManagement
                     labelStatus.Text = "Status: " + selectedBook?.IsCheckedOut;
 
                     if (selectedBook.IsCheckedOut == "Available")
+                    { 
+                        labelStatus.ForeColor = Color.Green;
                         buttonStatus.Text = "Borrowed";
-                    else
+                    }
+                    else 
+                    {
+                        labelStatus.ForeColor = Color.Red;
                         buttonStatus.Text = "Returned";
+                    }
                 }
                 else
                 {
+                    labelStatus.ForeColor = Color.Black;
                     buttonStatus.Text = "Borrowed / Returned";
                 }
             }
@@ -57,18 +64,21 @@ namespace Activity10_LibraryBookManagement
 
                     if (selectedBook.IsCheckedOut == "Available")
                     {
-                        buttonStatus.Text = "Returned";
                         selectedBook.Borrow();
+                        labelStatus.ForeColor = Color.Red;
+                        buttonStatus.Text = "Returned";
                     }
                     else
                     { 
-                        buttonStatus.Text = "Borrowed";
                         selectedBook.Return();
+                        labelStatus.ForeColor = Color.Green;
+                        buttonStatus.Text = "Borrowed";
                     }
 
                     labelStatus.Text = "Status: " + selectedBook?.IsCheckedOut;
                 }
                 else
+                    labelStatus.ForeColor = Color.Black;
                     buttonStatus.Text = "Borrowed / Returned";
             }
             catch (Exception ex)
